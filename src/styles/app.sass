@@ -1,0 +1,26 @@
+@use 'variables'
+@use 'mixins'
+
+body
+  color: variables.$primary-text-color
+  margin: 0 auto
+  padding: 0
+  background: variables.$secondary-bg-color
+  max-width: variables.$monitor-breakpoint
+  min-height: 100vh
+
+.app-container
+  display: flex
+  margin: 5px auto
+  min-height: calc(100vh - 90px)
+
+  a
+    text-decoration: none
+    color: variables.$primary-text-color
+
+    &:hover
+      @include mixins.opacity
+
+  main
+    display: flex
+    flex: 1
