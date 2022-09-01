@@ -3,7 +3,7 @@ import CustomBarChart from '../utils/CustomBarChart';
 import CustomSelectSmall from '../utils/CustomSelectSmall';
 
 const CountryPage = ({ data }) => {
-  const [dataToRender, setDataToRender] = useState([]);
+  const [chartData, setChartData] = useState([]);
 
   const options = {
     title: "Estatísticas do COVID-19 no Brasil - Por estado",
@@ -21,23 +21,21 @@ const CountryPage = ({ data }) => {
 
   useEffect(() => {
     if (data?.length > 0) {
-      setDataToRender(data.reduce((acc, item) => (
-        [...acc, [item.state, item.cases, item.deaths, item.suspects]]
-      ), [['Estado', 'Casos', 'Mortes', 'Suspeitos']]));
+      setChartData(data);
     }
 
     () => {
-      setDataToRender([]);
+      setChartData([]);
     }
   }, [data]);
   return (
     <>
       <CustomSelectSmall
-        setDataToRender={setDataToRender}
+        setChartData={setChartData}
         actualChartData={data}
         id="order-select"
       />     
-      <CustomBarChart data={data} type="byCountry" options={options}/>
+      <CustomBarChart data={chartData} type="byCountry" options={options}/>
     </>
   )
 }

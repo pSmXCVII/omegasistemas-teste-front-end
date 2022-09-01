@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import _ from 'lodash';
 import '../../styles/utils/customSelectSmall.sass'
 
-const CustomSelectSmall = ({ setDataToRender, actualChartData }) => {
+const CustomSelectSmall = ({ setChartData, actualChartData }) => {
   const [order, setOrder] = useState('cases');
 
   const handleChange = (event) => {
@@ -15,12 +15,11 @@ const CustomSelectSmall = ({ setDataToRender, actualChartData }) => {
 
   useEffect(() => {
     if (actualChartData?.length > 0) {
-      setDataToRender(_.orderBy(actualChartData, order, 'desc').reduce((acc, item) => (
-        [...acc, [item.state, item.cases, item.deaths, item.suspects]]
-      ), [['Estado', 'Casos', 'Mortes', 'Suspeitos']]));
+      setChartData(_.orderBy(actualChartData, order, 'desc'));
     }
   }, [order]);
 
+  
   return (
     <FormControl sx={{ mb: 2, minWidth: 120 }} size="medium" className="custom-select-small">
       <InputLabel id="demo-select-small">Ordenar por</InputLabel>
