@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { GET_CASES_BY_STATE } from './api';
 import './styles/app.sass';
+import Header from './components/Header'
 import MainContent from './components/MainContent';
 import AsideContainer from './components/AsideContainer';
-import StatePage from './components/State/StatePage';
+import StatePage from './components/StatePage/StatePage';
 
 function App() {
-  const [lastUpdate, setLastUpdate] = useState('data');
+  const [lastUpdate, setLastUpdate] = useState(null);
   const [casesByState, setCaseByState] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const {url, options} = GET_CASES_BY_STATE();
@@ -25,15 +27,27 @@ function App() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (casesByState.length > 0) {
+      setLastUpdate(casesByState[0].datetime);
+    }
+    return () => {
+      setLastUpdate(null);
+    }
+  }, [casesByState])
+  
 
   return (
-    <div className="app-container">
-      <Routes>
-        <Route path='/' element={<MainContent data={casesByState} />} />
-        <Route path='/:uf' element={<StatePage data={casesByState}/>} />
-      </Routes>
-      <AsideContainer data={casesByState}/>
-    </div>
+    <>
+      <Header lastUpdate={lastUpdate} />
+      <div className="app-container">
+        <Routes>
+          <Route path='/' element={<MainContent data={casesByState} />} />
+          <Route path='/:uf' element={<StatePage data={casesByState}/>} />
+        </Routes>
+        <AsideContainer data={casesByState}/>
+      </div>
+    </>
   )
 }
 
