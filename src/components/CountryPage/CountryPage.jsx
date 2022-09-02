@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import CustomBarChart from '../utils/CustomBarChart';
-import CustomSelectSmall from '../utils/CustomSelectSmall';
+import CustomBarChart from '../Others/CustomBarChart';
+import CustomSelectSmall from '../Others/CustomSelectSmall';
 
 const CountryPage = ({ data }) => {
   const [chartData, setChartData] = useState([]);

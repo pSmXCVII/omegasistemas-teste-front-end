@@ -5,13 +5,28 @@ header
   margin: 0
 
   .logo
+    display: flex
     width: 35px
     margin-right: 10px
+
+  .brand
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+    align-content: center
+    justify-content: flex-start
+    align-items: center
+
+  a
+    font-weight: 600
+    letter-spacing: 0.3rem
+    color: variables.$primary-text-color
+    text-decoration: none
 
   .badge-last-update
     padding: 15px 20px
     margin-right: 5px
     border-radius: 10px
-    color: #eee
+    color: variables.$primary-text-color
     background: #3f507a
     font-weight: bold

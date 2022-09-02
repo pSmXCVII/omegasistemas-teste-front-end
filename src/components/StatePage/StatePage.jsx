@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import '../../styles/components/statePage/statePage.sass'
-import CustomBarChart from '../utils/CustomBarChart';
+import CustomBarChart from '../Others/CustomBarChart';
 
 const StatePage = ({ data }) => {
   const [especificStateStats, setEspecificStateStats] = useState({});
