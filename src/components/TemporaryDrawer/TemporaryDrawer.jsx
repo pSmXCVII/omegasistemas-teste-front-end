@@ -9,11 +9,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import '../../styles/components/temporaryDrawer/temporaryDrawer.sass'
+import styles from './TemporaryDrawer.module.sass';
 
 export default function TemporaryDrawer() {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
@@ -62,7 +60,7 @@ export default function TemporaryDrawer() {
     <>
       <Button
         onClick={toggleDrawer(true)}
-        className="btn-drawer"
+        className={styles.btnDrawer}
         title="drawer"
       >
         <MenuIcon />

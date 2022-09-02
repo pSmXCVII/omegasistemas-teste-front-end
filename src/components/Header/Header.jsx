@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
-import Logo from '../assets/imgs/covid-19.svg';
-import '../styles/components/header.sass';
-import { Box, Button, Skeleton } from '@mui/material';
-import { elapsedTime } from '../utils/dateCalculator';
-import TemporaryDrawer from './TemporaryDrawer/TemporaryDrawer';
+import { Box, Skeleton } from '@mui/material';
+import Logo from '../../assets/imgs/covid-19.svg';
+import { elapsedTime } from '../../utils/dateCalculator';
+import TemporaryDrawer from '../TemporaryDrawer/TemporaryDrawer';
+import styles from './Header.module.sass';
 
 const ResponsiveAppBar = ({ lastUpdate }) => {
   const [dateToRender, setDateToRender] = useState();
@@ -29,10 +28,10 @@ const ResponsiveAppBar = ({ lastUpdate }) => {
             <Typography
               variant="h6"
               noWrap
-              className='brand'
+              className={styles.brand}
             >
               <Box>
-                <img src={Logo} className="logo"/>
+                <img src={Logo} className={styles.logo}/>
               </Box>
               <Box sx={{ display: 'flex'}}>
                 <span>
@@ -44,7 +43,7 @@ const ResponsiveAppBar = ({ lastUpdate }) => {
 
         </Box>
         {dateToRender ? (
-          <Box sx={{ flexGrow: 0}} className="badge-last-update">
+          <Box sx={{ flexGrow: 0}} className={styles.badgeLastUpdate}>
             Dados atualizados há {dateToRender}
           </Box>
         ) : (
@@ -55,7 +54,7 @@ const ResponsiveAppBar = ({ lastUpdate }) => {
             sx={{ borderRadius: '10px' }}
           />
         )}
-        <TemporaryDrawer className="mobile-drawer"/>
+        <TemporaryDrawer className={styles.mobileDrawer}/>
       </Toolbar>
     </AppBar>
   );
