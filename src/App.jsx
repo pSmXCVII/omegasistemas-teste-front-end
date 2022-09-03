@@ -45,6 +45,7 @@ function App() {
       <Container sx={{display: 'flex'}} className={style.appContainer}>
         <Routes>
           <Route path='/' element={<CountryPage data={casesByState}/>} />
+          <Route path='/brasil' element={<CountryPage data={casesByState}/>} />
           <Route path='/:uf' element={<StatePage data={casesByState}/>} />
         </Routes>
         <AsideContainer data={casesByState}/>

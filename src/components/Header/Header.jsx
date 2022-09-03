@@ -3,23 +3,13 @@ import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Box, Skeleton } from '@mui/material';
+import { Box } from '@mui/material';
 import Logo from '../../assets/imgs/covid-19.svg';
-import { elapsedTime } from '../../utils/dateCalculator';
 import TemporaryDrawer from '../TemporaryDrawer/TemporaryDrawer';
 import styles from './Header.module.sass';
+import LastUpdate from '../Others/LastUpdate/LastUpdate';
 
 const ResponsiveAppBar = ({ lastUpdate }) => {
-  const [dateToRender, setDateToRender] = useState();
-
-  useEffect(() => {
-    if (lastUpdate)
-    setDateToRender(elapsedTime(lastUpdate));
-    return () => {
-      setDateToRender();
-    }
-  }, [lastUpdate]);
-
   return (
     <AppBar position="static">
       <Toolbar >
@@ -45,19 +35,8 @@ const ResponsiveAppBar = ({ lastUpdate }) => {
           </Link>
 
         </Box>
-        {dateToRender ? (
-          <Box sx={{ flexGrow: 0}} className={styles.badgeLastUpdate}>
-            Dados atualizados há {dateToRender}
-          </Box>
-        ) : (
-          <Skeleton
-            variant="rectangular"
-            width={280}
-            height={48}
-            sx={{ borderRadius: '10px' }}
-          />
-        )}
-        <TemporaryDrawer className={styles.mobileDrawer}/>
+        <LastUpdate lastUpdate={lastUpdate} />
+        <TemporaryDrawer lastUpdate={lastUpdate}/>
       </Toolbar>
     </AppBar>
   );

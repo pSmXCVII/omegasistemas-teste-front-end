@@ -1,0 +1,16 @@
+@use '../../../variables'
+@use '../../../mixins'
+
+.hideable .badgeLastUpdate
+  border-radius: 10px
+
+.badgeLastUpdate
+  padding: 15px 20px
+  color: variables.$primary-text-color
+  background: #3f507a
+  font-weight: bold
+  text-align: center
+
+@media screen and (max-width: 768px)
+  .hideable
+    @include mixins.hide
