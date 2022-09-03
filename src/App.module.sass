@@ -9,7 +9,7 @@ body
   max-width: variables.$monitor-breakpoint
   min-height: 100vh
 
-.app-container
+.appContainer
   display: flex
   margin: 5px auto
   min-height: calc(100vh - 90px)
@@ -24,3 +24,10 @@ body
   main
     display: flex
     flex: 1
+
+@media screen and (max-width: 768px)
+  main
+    display: none !important
+
+  .appContainer
+    padding: 0 !important

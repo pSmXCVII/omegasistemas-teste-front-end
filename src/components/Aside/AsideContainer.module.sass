@@ -1,0 +1,59 @@
+@use '../../variables'
+@use '../../mixins'
+
+.asideContainer
+  display: flex
+  flex-direction: column
+  width: 320px
+  justify-content: flex-start
+  align-items: center
+  background: variables.$primary-bg-color
+  padding-top: 15px
+  border-radius: 5px
+
+  label
+    color: #ccc
+
+  .asideItens
+    overflow-y: auto
+    max-height: calc(100vh - 180px)
+    margin-top: 10px
+    padding-right: 15px
+
+  .searchState
+    border-radius: 4px
+    width: 260px
+    border: 1px solid #ccc
+    margin-bottom: 5px
+
+    input
+      color: #fff
+
+@media screen and (max-width: 768px)
+  .asideContainer
+    width: 100vw
+    padding-top: 10px
+
+    .asideItens
+      max-height: none
+      margin: 0
+      overflow-y: visible
+      padding: 10px
+      display: flex
+      flex-direction: row
+      flex-wrap: wrap
+      justify-content: center
+      align-items: center
+      align-content: center
+      text-align: center
+
+    .search
+      width: 99%
+      display: flex
+      flex-direction: row
+      align-content: center
+      justify-content: center
+      flex-wrap: wrap
+
+    .searchState
+      width: 95%

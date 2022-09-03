@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import '../../styles/components/statePage/statePage.sass'
-import CustomBarChart from '../Others/CustomBarChart';
+import styles from './StatePage.module.sass';
+import CustomBarChart from '../../Others/CustomBarChart/CustomBarChart';
 
 const StatePage = ({ data }) => {
   const [especificStateStats, setEspecificStateStats] = useState({});
@@ -25,10 +25,10 @@ const StatePage = ({ data }) => {
     
   }, []);
   return (
-    <main className='state-page'>
+    <main className={styles.statePage}>
       <CustomBarChart data={especificStateStats} options={options} type="byState" />
     </main>  
   )
 }
 
-export default StatePage
+export default StatePage;

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import '../styles/components/asideContainer.sass';
 import { TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import AsideCard from './Aside/AsideCard';
+import AsideCard from './AsideCard';
+import styles from './AsideContainer.module.sass';
 
 const AsideContainer = ({ data }) => {
   const [inputText, setInputText] = useState("");
@@ -17,8 +17,8 @@ const AsideContainer = ({ data }) => {
         el.uf.toLowerCase().includes(inputText)
   );
   return (
-    <aside  className="aside-container">
-      <div className="search">
+    <aside  className={styles.asideContainer}>
+      <div className={styles.search}>
         <TextField
           id="searchState"
           onChange={inputHandler}
@@ -27,14 +27,15 @@ const AsideContainer = ({ data }) => {
           label="Buscar estado"
           autoComplete='off'
           color='primary'
+          className={styles.searchState}
         />
       </div>
-      <div className="aside-itens">
+      <div className={styles.asideItens}>
         {filteredData.length > 0 ? filteredData.map((stateData) => (
           <AsideCard stateData={stateData} key={stateData.uid}/>
         )) : (
           <Box sx={{minWidth: '280px'}}>
-            <Typography className='stateName' gutterBottom>
+            <Typography className={styles.stateName} gutterBottom>
               Nenhum resultado
             </Typography>
           </Box>

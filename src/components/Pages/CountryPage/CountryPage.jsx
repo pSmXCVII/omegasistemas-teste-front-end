@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
-import CustomBarChart from '../Others/CustomBarChart';
-import CustomSelectSmall from '../Others/CustomSelectSmall';
+import { useEffect, useState } from 'react';
+import styles from './CountryPage.module.sass';
+import CustomBarChart from '../../Others/CustomBarChart/CustomBarChart';
+import CustomSelectSmall from '../../Others/CustomSelectSmall/CustomSelectSmall';
 
 const CountryPage = ({ data }) => {
   const [chartData, setChartData] = useState([]);
@@ -28,16 +29,17 @@ const CountryPage = ({ data }) => {
       setChartData([]);
     }
   }, [data]);
+
   return (
-    <>
+    <main className={styles.mainContent}>
       <CustomSelectSmall
         setChartData={setChartData}
         actualChartData={data}
         id="order-select"
       />     
       <CustomBarChart data={chartData} type="byCountry" options={options}/>
-    </>
-  )
-}
+    </main>
+  );
+};
 
 export default CountryPage

@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import _ from 'lodash';
-import '../../styles/utils/customSelectSmall.sass'
+import styles from './CustomSelectSmall.module.sass';
 
 const CustomSelectSmall = ({ setChartData, actualChartData }) => {
   const [order, setOrder] = useState('cases');
@@ -21,11 +21,17 @@ const CustomSelectSmall = ({ setChartData, actualChartData }) => {
 
   
   return (
-    <FormControl sx={{ mb: 2, minWidth: 120 }} size="medium" className="custom-select-small">
-      <InputLabel id="demo-select-small">Ordenar por</InputLabel>
+    <FormControl sx={{ mb: 2, minWidth: 120 }} size="medium" className={styles.customSelectSmall}>
+      <InputLabel
+        id="demo-select-small"
+        className={styles.demoSelectSmall}
+      >
+          Ordenar por
+      </InputLabel>
       <Select
         labelId="demo-select-small"
         id="demo-select-small"
+        className={styles.demoSelectSmall}
         value={order}
         label="Ordenar por"
         onChange={handleChange}
