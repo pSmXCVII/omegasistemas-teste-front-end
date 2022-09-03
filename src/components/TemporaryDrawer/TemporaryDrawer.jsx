@@ -14,8 +14,9 @@ import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import { Link } from 'react-router-dom';
 import styles from './TemporaryDrawer.module.sass';
+import LastUpdate from '../Others/LastUpdate/LastUpdate';
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer({ lastUpdate }) {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -28,13 +29,13 @@ export default function TemporaryDrawer() {
 
   const itemMenu = [
     {
-      label: 'Incidentes no Brasil',
-      icon: <DashboardOutlinedIcon />,
+      label: 'Incidentes em cada estado',
+      icon: <GridViewOutlinedIcon />,
       locate: '/'
     },
     {
-      label: 'Incidentes em cada estado',
-      icon: <GridViewOutlinedIcon />,
+      label: 'Incidentes no Brasil',
+      icon: <DashboardOutlinedIcon />,
       locate: '/brasil'
     },
   ];
@@ -86,6 +87,7 @@ export default function TemporaryDrawer() {
         onClose={toggleDrawer(false)}
       >
         <ListItensMenu />
+        <LastUpdate lastUpdate={lastUpdate} hideable={false}/>
       </Drawer>
     </>
   );

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import styles from './CountryPage.module.sass';
+import styles from './MainPage.module.sass';
 import CustomBarChart from '../../Others/CustomBarChart/CustomBarChart';
 import CustomSelectSmall from '../../Others/CustomSelectSmall/CustomSelectSmall';
 import StatesCard from '../../StatesCards/StatesCard';
 import { Skeleton } from '@mui/material';
 
-const CountryPage = ({ data }) => {
+const MainPage = ({ data }) => {
   const [chartData, setChartData] = useState([]);
 
   const options = {
@@ -61,8 +61,9 @@ const CountryPage = ({ data }) => {
           </>
         )}
       </section>
+      <StatesCard data={data}/>
     </>
   );
 };
 
-export default CountryPage
+export default MainPage
