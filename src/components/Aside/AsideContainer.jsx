@@ -18,7 +18,7 @@ const AsideContainer = ({ data }) => {
   );
   return (
     <aside  className={styles.asideContainer}>
-      <div className="search">
+      <div className={styles.search}>
         <TextField
           id="searchState"
           onChange={inputHandler}

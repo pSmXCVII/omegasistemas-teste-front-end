@@ -33,9 +33,12 @@ const ResponsiveAppBar = ({ lastUpdate }) => {
               <Box>
                 <img src={Logo} className={styles.logo}/>
               </Box>
-              <Box sx={{ display: 'flex'}}>
-                <span>
-                  COVID-19 | Dashboard
+              <Box sx={{ display: 'flex'}} className={styles.brandText}>
+                <span className={styles.title}>
+                  COVID-19
+                </span>
+                <span className={styles.subtitle}>
+                  Dashboard
                 </span>
               </Box>
             </Typography>

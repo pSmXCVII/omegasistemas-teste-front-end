@@ -4,6 +4,19 @@ header
   background: variables.$primary-bg-color !important
   margin: 0
 
+  .brandText
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: flex-start
+    line-height: 1.1rem
+
+    .title
+      font-size: 1.2rem
+
+    .subtitle
+      font-size: .75rem
+
   .logo
     display: flex
     width: 35px
@@ -31,6 +44,21 @@ header
     background: #3f507a
     font-weight: bold
 
-  @media screen and (max-width: 580px)
+  @media screen and (min-width: 350px)
+    .brandText
+      flex-direction: row
+
+      .title
+        &::after
+          content: ' | '
+          margin-right: 5px
+
+      .title
+        font-size: 1.3rem
+
+      .subtitle
+        font-size: 1.1rem
+
+  @media screen and (max-width: 768px)
     .badgeLastUpdate
       display: none

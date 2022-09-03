@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -9,8 +9,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import { Link } from 'react-router-dom';
 import styles from './TemporaryDrawer.module.sass';
 
 export default function TemporaryDrawer() {
@@ -26,30 +28,43 @@ export default function TemporaryDrawer() {
 
   const itemMenu = [
     {
-      label: 'Incidentes no Brasil', icon: <DashboardOutlinedIcon />
+      label: 'Incidentes no Brasil',
+      icon: <DashboardOutlinedIcon />,
+      locate: '/'
     },
     {
-      label: 'Incidentes em cada estado', icon: <GridViewOutlinedIcon />
+      label: 'Incidentes em cada estado',
+      icon: <GridViewOutlinedIcon />,
+      locate: '/brasil'
     },
   ];
 
   const ListItensMenu = () => (
     <Box
-      sx={{ width: 400 }}
+      className={styles.listItensMenu}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
+      <Button
+        onClick={toggleDrawer(false)}
+        className={styles.btnClose}
+        title="drawer"
+      >
+        <CloseOutlinedIcon />
+      </Button>
       <List>
-        {itemMenu.map((text) => (
-          <ListItem key={text.label} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {text.icon}
-              </ListItemIcon>
-              <ListItemText primary={text.label} />
-            </ListItemButton>
-          </ListItem>
+        {itemMenu.map((item) => (
+          <Link key={item.label} to={item.locate}>
+            <ListItem  disablePadding>
+              <ListItemButton>
+                  <ListItemIcon>
+                    {item.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />
