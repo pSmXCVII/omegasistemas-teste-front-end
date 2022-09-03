@@ -20,10 +20,6 @@ body
     &:hover
       @include mixins.opacity
 
-  main
-    display: flex
-    flex: 1
-
 @media screen and (min-width: 1200px)
   .appContainer
     max-width: 1280px !important
@@ -33,8 +29,6 @@ body
     padding: 0 !important
 
 @media screen and (max-width: 768px)
-  main
-    display: none !important
-
   .appContainer
     padding: 0 !important
+    justify-content: center

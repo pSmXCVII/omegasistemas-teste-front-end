@@ -1,11 +1,11 @@
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import styles from './AsideCard.module.sass';
+import styles from './StateCard.module.sass';
 
-const AsideCard = ({ stateData }) => {
+const StateCard = ({ stateData }) => {
   return (
     <Card className={styles.states} sx={{ background: 'transparent'}}>
-      <Link to={`/${stateData.uf}`}>
+      <Link to={`/estado/${stateData.uf}`}>
         <CardContent>
           <Typography className={styles.stateName} gutterBottom>
             {stateData.state}
@@ -27,4 +27,4 @@ const AsideCard = ({ stateData }) => {
   )
 }
 
-export default AsideCard
+export default StateCard

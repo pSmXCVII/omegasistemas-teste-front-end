@@ -1,0 +1,31 @@
+@use '../../../variables'
+
+.states
+  border-left: 5px solid #eee
+  border-right: 5px solid #eee
+  border-radius: 8px
+  margin-bottom: 10px
+  background: variables.$terciary-bg-color !important
+  min-width: 255px
+
+  p
+    color: variables.$primary-text-color
+
+  .stateName
+    text-align: center
+    font-weight: bold
+    border-bottom: 1px solid #eee
+
+  .badgeCases, .badgeDeaths, .badgeSuspects
+    padding: 1px 5px
+    border-radius: 10px
+    margin-bottom: 2px
+
+  .badgeCases
+    background: #1976d2
+
+  .badgeDeaths
+    background: #d56552
+
+  .badgeSuspects
+    background: #b5a952
