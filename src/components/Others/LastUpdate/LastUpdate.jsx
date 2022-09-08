@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import { Box, Skeleton } from '@mui/material';
 import { elapsedTime } from '../../../utils/dateCalculator';
 import styles from './LastUpdate.module.sass';
+import { useRecoilState } from 'recoil';
+import updateDataState from '../../../atoms/updateDataState';
 
-const LastUpdate = ({ lastUpdate, hideable = true }) => {
+const LastUpdate = ({ hideable = true }) => {
+  const [lastUpdate, setLastUpdate] = useRecoilState(updateDataState);
   const [dateToRender, setDateToRender] = useState();
 
   useEffect(() => {

@@ -4,8 +4,11 @@ import styles from './StatePage.module.sass';
 import StatesCard from '../../StatesCards/StatesCard';
 import CustomBarChart from '../../Others/CustomBarChart/CustomBarChart';
 import { Button, Skeleton, Typography } from '@mui/material';
+import { useRecoilState } from 'recoil';
+import isMobileState from '../../../atoms/isMobileState';
 
-const StatePage = ({ data, isMobile }) => {
+const StatePage = ({ data }) => {
+  const isMobile = useRecoilState(isMobileState);
   const [especificStateStats, setEspecificStateStats] = useState({});
   const { uf } = useParams();
 

@@ -1,8 +1,8 @@
-const API_URL = 'https://covid19-brazil-api.now.sh/api/report/v1';
+const API_URL = 'https://covid19-brazil-api.vercel.app/api/report/v1';
 
 export const GET_CASES_BY_STATE = () => (
   {
-    url: 'https://covid19-brazil-api.now.sh/api/report/v1',
+    url: API_URL,
     options: {
       method: 'GET'
     }
@@ -11,7 +11,7 @@ export const GET_CASES_BY_STATE = () => (
 
 export const GET_CASES_BY_COUNTRY = (country) => (
   {
-    url: `https://covid19-brazil-api.now.sh/api/report/v1/${country}`,
+    url: `${API_URL}/${country}`,
     options: {
       method: 'GET'
     }

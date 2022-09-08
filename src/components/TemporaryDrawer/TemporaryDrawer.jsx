@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import styles from './TemporaryDrawer.module.sass';
 import LastUpdate from '../Others/LastUpdate/LastUpdate';
 
-export default function TemporaryDrawer({ lastUpdate }) {
+export default function TemporaryDrawer() {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -87,7 +87,7 @@ export default function TemporaryDrawer({ lastUpdate }) {
         onClose={toggleDrawer(false)}
       >
         <ListItensMenu />
-        <LastUpdate lastUpdate={lastUpdate} hideable={false}/>
+        <LastUpdate hideable={false}/>
       </Drawer>
     </>
   );

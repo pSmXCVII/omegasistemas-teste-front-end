@@ -9,7 +9,7 @@ import TemporaryDrawer from '../TemporaryDrawer/TemporaryDrawer';
 import styles from './Header.module.sass';
 import LastUpdate from '../Others/LastUpdate/LastUpdate';
 
-const ResponsiveAppBar = ({ lastUpdate }) => {
+const ResponsiveAppBar = () => {
   return (
     <AppBar position="static">
       <Toolbar >
@@ -35,8 +35,8 @@ const ResponsiveAppBar = ({ lastUpdate }) => {
           </Link>
 
         </Box>
-        <LastUpdate lastUpdate={lastUpdate} />
-        <TemporaryDrawer lastUpdate={lastUpdate}/>
+        <LastUpdate/>
+        <TemporaryDrawer/>
       </Toolbar>
     </AppBar>
   );

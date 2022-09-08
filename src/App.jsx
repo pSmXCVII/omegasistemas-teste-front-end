@@ -7,11 +7,27 @@ import Header from './components/Header/Header';
 import StatePage from './components/Pages/StatePage/StatePage';
 import MainPage from './components/Pages/MainPage/MainPage';
 import CountryPage from './components/Pages/CountryPage/CountryPage';
+import { useSetRecoilState } from 'recoil';
+import updateDataState from './atoms/updateDataState';
+import isMobileState from './atoms/isMobileState';
 
 function App() {
-  const [lastUpdate, setLastUpdate] = useState(null);
+  const setLastUpdate = useSetRecoilState(updateDataState);
   const [casesByState, setCaseByState] = useState([]);
-  const [isMobile, setIsMobile] = useState(false);
+  const setIsMobile = useSetRecoilState(isMobileState);
+
+  async function fetchData() {
+    const {url, options} = GET_CASES_BY_STATE();
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) {
+        const { data } = await response.json();
+        setCaseByState(data);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   function handleResize() {
     isDeviceMobile();
@@ -26,37 +42,9 @@ function App() {
   };
   
   useEffect(() => {
-    async function fetchData() {
-      const {url, options} = GET_CASES_BY_STATE();
-      try {
-        const response = await fetch(url, options);
-        if (response.ok) {
-          const { data } = await response.json();
-          setCaseByState(data);
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
     fetchData();
-    window.addEventListener('load', isDeviceMobile);
-    window.addEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    async function fetchData() {
-      const {url, options} = GET_CASES_BY_STATE();
-      try {
-        const response = await fetch(url, options);
-        if (response.ok) {
-          const { data } = await response.json();
-          setCaseByState(data);
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetchData();
+    isDeviceMobile();
+    window.addEventListener('resize', isDeviceMobile);
   }, []);
 
   useEffect(() => {
@@ -71,12 +59,12 @@ function App() {
 
   return (
     <>
-      <Header lastUpdate={lastUpdate} />
+      <Header/>
       <Container sx={{display: 'flex'}} className={style.appContainer}>
         <Routes>
-          <Route path='/' element={<MainPage data={casesByState} isMobile={isMobile}/> } />
+          <Route path='/' element={<MainPage data={casesByState}/> } />
           <Route path='/brasil' element={<CountryPage data={casesByState} />} />
-          <Route path='/estado/:uf' element={<StatePage data={casesByState} isMobile={isMobile}/>} />
+          <Route path='/estado/:uf' element={<StatePage data={casesByState} />} />
         </Routes>
       </Container>
     </>
